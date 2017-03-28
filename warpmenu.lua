@@ -38,8 +38,6 @@ Server:On('WarpMenuRequest', function(warpstring)
 		warpmenu = UI:Menu(options)
 
 		warpmenu:open()
-		warpmenu:setState(true)
-		print("YEAH")
 	end)
 end)
 

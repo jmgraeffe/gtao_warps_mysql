@@ -34,10 +34,9 @@ Player:On('command', function(player, command, params)
 		else
 			player:chatMsg("Too less parameters. Usage: /warp [name]")
 		end
-    end
 	
 	-- remote warp other players
-    if command == 'rwarp' then
+    elseif command == 'rwarp' then
         if params[1] and params[2] then
 			if warps[params[2]] then
 				local warp = warps[params[2]]
@@ -65,10 +64,9 @@ Player:On('command', function(player, command, params)
 		else
 			player:chatMsg("Too less parameters. Usage: /rwarp [player] [warp]")
 		end
-    end
 
 	-- lists warps
-    if command == 'warps' then
+    elseif command == 'warps' then
 		local num = 0
 		
 		player:chatMsg("The following warps are available:")
@@ -84,10 +82,9 @@ Player:On('command', function(player, command, params)
 		if num == 0 then
 			player:chatMsg(" -> There are no warps available! Sorry.")
 		end
-    end
 	
 	-- opens warp menu
-    if command == 'warpmenu' then
+    elseif command == 'warpmenu' then
 		local warpnames = {}
 		for key, warp in pairs(warps) do
 			table.insert(warpnames, warp.name)
@@ -96,10 +93,9 @@ Player:On('command', function(player, command, params)
 		local warpstring = table.concat(warpnames, "|")
 
 		player:triggerClient("WarpMenuRequest", warpstring)
-    end
 	
 	-- sets warp
-    if command == 'setwarp' then
+    elseif command == 'setwarp' then
 		if params[1] then
 			if not warps[params[1]] then
 				-- cache locally
@@ -119,10 +115,9 @@ Player:On('command', function(player, command, params)
 		else
 			player:chatMsg("Too less parameters. Usage: /setwarp [name]")
 		end
-    end	
 	
 	-- deletes warp
-    if command == 'delwarp' then
+    elseif command == 'delwarp' then
 		if params[1] then
 			if warps[params[1]] then
 				-- delete from database
@@ -138,10 +133,9 @@ Player:On('command', function(player, command, params)
 		else
 			player:chatMsg("Too less parameters. Usage: /delwarp [name]")
 		end
-    end
 	
 	-- reloads the warps from the database (may cause lags, so do not spam)
-    if command == 'relwarps' then
+    elseif command == 'relwarps' then
         loadwarps()
     end
 end)
